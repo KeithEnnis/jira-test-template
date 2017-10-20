@@ -1,0 +1,84 @@
+/*icon sizes*/
+.glyphicon {
+  font-size: 1.3em;
+}
+
+/* X colour, cursor and hover colour*/
+.glyphicon-remove-sign {
+  color: #700;
+  cursor: pointer;
+  padding:0.2%;
+}  
+.glyphicon-remove-sign:hover {
+  color: #f00;
+}
+
+/* / colour, cursor and hover colour*/
+.glyphicon-ok-sign {
+  color: #338800;
+  cursor: pointer;
+  padding:0.2%;
+}
+.glyphicon-ok-sign:hover {
+  color: #0D0;
+}
+
+/* ? colour, cursor and hover colour*/
+.glyphicon-question-sign {
+  color: #3388AA;
+  cursor: pointer;
+  padding:0.2%;
+}
+.glyphicon-question-sign:hover {
+  color: #33ddee;
+}
+
+/* both Move icons colour, cursor and hover colour*/
+.glyphicon-arrow-up, .glyphicon-arrow-down {
+  cursor: pointer;
+}
+.glyphicon-arrow-up:hover, .glyphicon-arrow-down:hover {
+  color: #CC7722;
+}
+
+/* Delete colour, cursor and hover colour*/
+.glyphicon-trash {
+  cursor: pointer;
+}
+.glyphicon-trash:hover {
+    color: #f00;
+}
+
+/* + colour, cursor position and hover colour*/
+.glyphicon-plus {
+  color: #070;
+  cursor: pointer;
+  padding:0.2%;
+  margin-bottom: 1.3em;
+  font-size: 1.5em;
+  
+ /* position: absolute;
+  top: 8px;
+  right: 0;
+  */
+}  
+.glyphicon-plus:hover {
+  color: #0D0;
+}
+
+/*get the radials and hide them but keep the labels visible
+The HTML image will be used to select the radial*/
+.toggle_radio input[type="radio"]{
+  display: none;
+}
+
+/*color when glyphy checked (for each type)*/
+:checked + i.glyphicon.glyphicon-remove-sign{
+  color: #f00;
+}
+:checked + i.glyphicon.glyphicon-question-sign{
+  color: #33ddee;
+}
+:checked + i.glyphicon.glyphicon-ok-sign{
+  color: #0D0;
+}

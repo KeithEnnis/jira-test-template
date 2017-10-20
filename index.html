@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- My Stylesheet-->
+    <link rel="stylesheet" href="styles/main.css" type="text/css" />
+    <!-- external bootstrap stuff for table graphics and free glyphcons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       
+    <title>Jira Comment maker for Testers</title>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>QA JIRA Testing results format helper</h1>
+  <p>The text fields do NOT allow use of return for markup formatting reasons.</p>
+    <div id="table" class="table-editable">
+    
+      <table class="table">
+        <tr>
+          <th>Test</th>
+          <th>Expected Result</th>
+          <th>Result</th>
+          <th>Notes</th>
+          <th>Move</th>
+          <th>Del</th>
+        </tr>
+        <tr>
+          <td contenteditable="true">What to test</td>
+          <td contenteditable="true">What to expect</td>
+          <td>
+              <div class="toggle_radio">
+                <label for="first_toggle_testFailed0">
+                    <input type="radio" class="toggle_option" id="first_toggle_testFailed0" name="toggle_option">
+                    <i name="toggle_option_label" class="glyphicon glyphicon-remove-sign"></i>
+                </label> 
+                
+                <label for="second_toggle_testNotComplete0">
+                  <input type="radio" checked class="toggle_option" id="second_toggle_testNotComplete0" name="toggle_option" checked="checked">
+                  <i name="toggle_option_label" class="glyphicon glyphicon-question-sign" checked="checked"></i>
+                </label>
+  
+                <label for="third_toggle_testPassed0">
+                  <input type="radio" class="toggle_option" id="third_toggle_testPassed0" name="toggle_option">
+                  <i name="toggle_option_label" class="glyphicon glyphicon-ok-sign"></i>
+                </label>
+              </div>
+            </td>
+          <td contenteditable="true">Notes go here</td>
+          <td>
+            <span class="table-up glyphicon glyphicon-arrow-up"></span>
+            <span class="table-down glyphicon glyphicon-arrow-down"></span>
+          </td>
+          <td>
+            <span class="table-remove glyphicon glyphicon-trash"></span>
+          </td>
+        </tr>
+      <!-- This is our hidden clonable table line -->
+        <tr class="hide">
+          <td contenteditable="true">What to test</td>
+          <td contenteditable="true">What to expect</td>
+          <td>
+            <div class="toggle_radio">
+              <label for="first_toggle_testFailed">
+                  <input type="radio" class="toggle_option" id="first_toggle_testFailed" name="toggle_option0">
+                  <i name="toggle_option_label" class="glyphicon glyphicon-remove-sign"></i>
+              </label> 
+              
+              <label for="second_toggle_testNotComplete">
+                <input type="radio" checked class="toggle_option" id="second_toggle_testNotComplete" name="toggle_option0" checked="checked">
+                <i name="toggle_option_label" class="glyphicon glyphicon-question-sign" checked="checked"></i>
+              </label>
+
+              <label for="third_toggle_testPassed">
+                <input type="radio" class="toggle_option" id="third_toggle_testPassed" name="toggle_option0">
+                <i name="toggle_option_label" class="glyphicon glyphicon-ok-sign"></i>
+              </label>
+            </div>
+          </td>
+          <td contenteditable="true">Notes go here</td>
+          <td>
+            <span class="table-up glyphicon glyphicon-arrow-up"></span>
+            <span class="table-down glyphicon glyphicon-arrow-down"></span>
+          </td>
+          <td>
+            <span class="table-remove glyphicon glyphicon-trash"></span>
+          </td>
+        </tr>
+      </table>
+      <span class="table-add glyphicon glyphicon-plus"></span>  
+    </div>
+  <!--This is our magic export button -->
+    <button id="export-btn" class="btn btn-primary">Export Data</button>
+    <pre id="export"></pre>
+    
+ 
+<!-- BEST PRACTICE: load JS as the last action in the body tag-->
+<!-- need JQuery lib for stripping out carridge returns in contenteditable-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- backup JQery lib incase we cant load or reach the one at the site above-->
+<script> window.JQuery||document.write('<script src="scripts/jquery-3.2.1.js"><\/script')</script>
+<!--JS code to keep the text free of carridge returns even cory pasta attempts-->
+<script src="scripts/contentEditableCarridgeReturnPeelerJQuery.js" type="text/javascript"></script>
+<!-- JS for all the table and exporting functionality-->
+    <script src="scripts/tableControl.js" type="text/javascript"></script>
+
+</body>
+</html>
+
