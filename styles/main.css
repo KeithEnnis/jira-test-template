@@ -11,16 +11,18 @@
 }  
 .glyphicon-remove-sign:hover {
   color: #f00;
+  
 }
 
 /* / colour, cursor and hover colour*/
 .glyphicon-ok-sign {
   color: #338800;
   cursor: pointer;
-  padding:0.2%;
+  padding: 0.2%;
 }
 .glyphicon-ok-sign:hover {
   color: #0D0;
+  
 }
 
 /* ? colour, cursor and hover colour*/
@@ -31,6 +33,7 @@
 }
 .glyphicon-question-sign:hover {
   color: #33ddee;
+  
 }
 
 /* both Move icons colour, cursor and hover colour*/
@@ -49,7 +52,7 @@
     color: #f00;
 }
 
-/* + colour, cursor position and hover colour*/
+/* Pluss Symbol colour, cursor position and hover colour*/
 .glyphicon-plus {
   color: #070;
   cursor: pointer;
@@ -75,10 +78,13 @@ The HTML image will be used to select the radial*/
 /*color when glyphy checked (for each type)*/
 :checked + i.glyphicon.glyphicon-remove-sign{
   color: #f00;
+  font-size: 1.8em;
 }
 :checked + i.glyphicon.glyphicon-question-sign{
   color: #33ddee;
+  font-size: 1.8em;
 }
 :checked + i.glyphicon.glyphicon-ok-sign{
   color: #0D0;
+  font-size: 1.8em;
 }
