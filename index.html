@@ -15,20 +15,61 @@
 
   <h1>QA JIRA Testing results format helper</h1>
   <p>The text fields do NOT allow use of return for markup formatting reasons.</p>
+  <fieldset>
+	<legend>Test Environment Information</legend>
+	<p>
+		<input type="checkbox" id = "serverSwitch" />
+		<label>Server</label>
+			<input type = "text" id = "serverName" value = "Server Used" disabled="disabled" />
+	</p>
+		<p>
+			<input type="checkbox" id = "arsenalSwitch"/>
+			<label>Arsenal</label>
+				<input type = "text" id = "arsenalName" value = "Arsenal Server Used" disabled="disabled" />
+		</p>
+		<p>
+			<input type="checkbox" id = "branchSwitch"/>
+			<label>Branch</label>
+				<input type = "text" id = "branchName" value = "feature_branch_name" disabled="disabled" />
+			<label>URL</label>
+				<input type = "text" id = "branchNameURL" value = "https://Jenkins.branch.url" disabled="disabled" />
+		</p>
+		<p>
+			<input type="checkbox" id = "buildSwitch"/>
+			<label>Build</label>
+				<input type = "text" id = "buildCommit" value = "Commit ID" disabled="disabled" />
+			<label>URL</label>
+				<input type = "text" id = "buildCommitURL" value = "https://Github.Pull.request.url" disabled="disabled" />
+		</p>
+		<p>
+			<input type="checkbox" id = "agentSwitch"/>
+			<label>Agent</label>
+				<input type = "text" id = "agentBuild" value = "Agent Build Used" disabled="disabled"/>
+			<label>URL</label>
+				<input type = "text" id = "agentBuildURL" value = "https://Jenkins.branch.url" disabled="disabled" />
+		</p>
+		<p>
+			<input type="checkbox" id = "tableNameSwitch"/>
+			<label>Table Title</label>
+				<input type = "text" id = "tableName" value = "Title for the table" disabled="disabled" />
+		</p>
+	</fieldset>
     <div id="table" class="table-editable">
     
       <table class="table">
         <tr>
-          <th>Test</th>
-          <th>Expected Result</th>
+          <th>Given</th>
+          <th>When</th>
+		  <th>Then</th>
           <th>Result</th>
           <th>Notes</th>
           <th>Move</th>
           <th>Del</th>
         </tr>
         <tr>
-          <td contenteditable="true">What to test</td>
-          <td contenteditable="true">What to expect</td>
+          <td id = "BDDGiven_0" contenteditable="true">Given x AND y</td>
+          <td id = "BDDWhen_0" contenteditable="true">When x AND y</td>
+		  <td id = "BDDThen_0" contenteditable="true">Then x AND y</td>
           <td>
               <div class="toggle_radio">
                 <label for="first_toggle_testFailed0">
@@ -47,7 +88,7 @@
                 </label>
               </div>
             </td>
-          <td contenteditable="true">Notes go here</td>
+          <td id = "notes_0" contenteditable="true">Notes go here</td>
           <td>
             <span class="table-up glyphicon glyphicon-arrow-up"></span>
             <span class="table-down glyphicon glyphicon-arrow-down"></span>
@@ -58,8 +99,9 @@
         </tr>
       <!-- This is our hidden clonable table line -->
         <tr class="hide">
-          <td contenteditable="true">What to test</td>
-          <td contenteditable="true">What to expect</td>
+          <td id = "BDDGiven" contenteditable="true">Given x AND y</td>
+          <td id = "BDDWhen" contenteditable="true">When x AND y</td>
+		  <td id = "BDDThen" contenteditable="true">Then x AND y</td>
           <td>
             <div class="toggle_radio">
               <label for="first_toggle_testFailed">
@@ -78,7 +120,7 @@
               </label>
             </div>
           </td>
-          <td contenteditable="true">Notes go here</td>
+          <td id = "notes" contenteditable="true">Notes go here</td>
           <td>
             <span class="table-up glyphicon glyphicon-arrow-up"></span>
             <span class="table-down glyphicon glyphicon-arrow-down"></span>
@@ -93,7 +135,10 @@
   <!--This is our magic export button -->
     <button id="export-btn" class="btn btn-primary">Export Data</button>
     <pre id="export"></pre>
-    
+  
+  <!--This is our magic import button WORK IN PROGRESS -->
+    <button id="import-btn" class="btn btn-primary">Import Data</button>
+    <pre contenteditable="true" id="import"></pre>    
  
 <!-- BEST PRACTICE: load JS as the last action in the body tag-->
 <!-- need JQuery lib for stripping out carridge returns in contenteditable-->
@@ -107,4 +152,3 @@
 
 </body>
 </html>
-
