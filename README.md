@@ -13,7 +13,7 @@ Should be self explanatory just run index.html in your browser<br>
 (preferably chrome, should work in FF too)<br>
 Warning no save functionality yet so becarefull with F5 before you export.<br>
 <br>
-There are now 6 additions to allow a neat environment information section<br>
+There are now 4 additions to allow a neat environment information section<br>
 Each section will need to be ticked to enable it's inclusion in the export<br>
 Branch, Build and Agent allow url links to be created to the relevent sources<br>
 The table itself is now BDD driven in it's content style, this is to help facilitate writing BDD test cases and transitioning some or all of them to automation.<br>
