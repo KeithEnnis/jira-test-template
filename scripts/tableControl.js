@@ -210,10 +210,6 @@ $("#serverSwitch").click(function() {//test environment server info on/off
     $("#serverName").attr('disabled',! this.checked);
 });
 
-$("#arsenalSwitch").click(function() {//test environment arsenal info on/off
-    $("#arsenalName").attr('disabled',! this.checked);
-});
-
 $("#branchSwitch").click(function() {//test environment branch info on/off
     $("#branchName").attr('disabled',! this.checked);
 	$("#branchNameURL").attr('disabled',! this.checked);
@@ -222,11 +218,6 @@ $("#branchSwitch").click(function() {//test environment branch info on/off
 $("#buildSwitch").click(function() {//test environment build info on/off
     $("#buildCommit").attr('disabled',! this.checked);
 	$("#buildCommitURL").attr('disabled',! this.checked);
-});
-
-$("#agentSwitch").click(function() {//test environment agent info on/off
-    $("#agentBuild").attr('disabled',! this.checked);
-	$("#agentBuildURL").attr('disabled',! this.checked);
 });
 
 $("#tableNameSwitch").click(function() {//test table name on/off
@@ -248,12 +239,6 @@ $BTN.click(function () {
 		data.push(serverLine);
   }
 
-  var arsenalLine = "Arsenal: " + $("#arsenalName").val();
-	if ($("#arsenalName").attr('disabled') !== 'disabled'){
-		markDownSanitisation(arsenalLine);//function to check for {stuff} insert here
-		data.push(arsenalLine);
-  }
-
   var branchLine = "Branch: [" + $("#branchName").val() + "|" + $("#branchNameURL").val() + "]";
 	if ($("#branchName").attr('disabled') !== 'disabled'){
 		markDownSanitisation(branchLine);//function to check for {stuff} insert here
@@ -264,12 +249,6 @@ $BTN.click(function () {
 	if ($("#buildCommit").attr('disabled') !== 'disabled'){
 		markDownSanitisation(buildLine);//function to check for {stuff} insert here
 		data.push(buildLine);
-  }
-  
-  var agentLine = "Agent: ["+ $("#agentBuild").val() + "|" + $("#buildCommitURL").val() + "]";
-	if ($("#agentBuild").attr('disabled') !== 'disabled'){
-		markDownSanitisation(agentLine);//function to check for {stuff} insert here
-		data.push(agentLine);
   }
   
   var tableNameLine = "h2. " + $("#tableName").val();
@@ -323,10 +302,8 @@ $ImportBTN.click(function () {
 //make the import button grab the content editable stuff and reverse flow the export stuff
 	var importData = $IMPORT.text().split('\n');//fill the array with lines of data
 	var firstServerNameFound = false;
-	var firstArsenalNameFound = false;
 	var firstBranchNameFound = false;
 	var firstBuildCommitFound = false;
-	var firstAgentBuildFound = false;
 	var firstTableNameFound = false;
 	var firstTableHeaderFound = false;
 	var doneFindingRelevantData = false;
@@ -351,18 +328,6 @@ $ImportBTN.click(function () {
 					$('#serverName').removeAttr("disabled");// Enable the text box
 					$('#serverName').val(firstServerName);// populate the text box
 					firstServerNameFound = true;// we found what we wanted so no need to search for more server name lines
-					continue; //breaks out of this loop as we found what we wanted on this line
-					};
-				};
-			if (firstArsenalNameFound===false){// as long as we haven't found an Arsenal line already search for one
-				searchResult = importData[doLoop].match(/Arsenal: (.*)/);//is this line a match for an Arsenal line
-				if (searchResult !== null){// do something if a match is found
-					var firstArsenalName = searchResult[1];//regex pre crops the "Arsenal: " text and stores the rest in array index 1
-					$.trim(firstArsenalName);// polish, activate, and populate the Arsenal name field section
-					$('#arsenalSwitch').attr('checked', 'checked');
-					$('#arsenalName').removeAttr("disabled");
-					$('#arsenalName').val(firstArsenalName);
-					firstArsenalNameFound = true;// we found what we wanted so no need to search for more Arsenal name lines
 					continue; //breaks out of this loop as we found what we wanted on this line
 					};
 				};
@@ -395,22 +360,6 @@ $ImportBTN.click(function () {
 					$('#buildCommit').val(firstBuildCommit);
 					$('#buildCommitURL').val(firstBuildCommitURL);
 					firstBuildCommitFound = true;// we found what we wanted so no need to search for more Branch name lines
-					continue; //breaks out of this loop as we found what we wanted on this line
-					};
-				};
-			if (firstAgentBuildFound===false){// as long as we haven't found a Build line already search for one
-				searchResult = importData[doLoop].match(/Agent: \[(.*)\|(.*)\]/);//regEx updated to do 2 groups around [| and |] for the return array to seperate name and url
-				if (searchResult !== null){
-					firstAgentBuild = searchResult[1];
-					firstAgentBuildURL = searchResult[2];
-					$.trim(firstAgentBuild);
-					$.trim(firstAgentBuildURL);
-					$('#agentSwitch').attr('checked', 'checked');
-					$('#agentBuild').removeAttr("disabled");
-					$('#agentBuildURL').removeAttr("disabled");
-					$('#agentBuild').val(firstAgentBuild);
-					$('#agentBuildURL').val(firstAgentBuildURL);
-					firstAgentBuildFound = true;
 					continue; //breaks out of this loop as we found what we wanted on this line
 					};
 				};
